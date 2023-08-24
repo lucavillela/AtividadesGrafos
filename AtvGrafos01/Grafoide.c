@@ -6,16 +6,25 @@
 typedef struct adjc{
 	struct adjc* pontAdjc;
 	struct vertice* pontProx;
-}tp_listase;
+}adjc;
 
 typedef struct vertice{
 	char rotulo;
 	adjc* listaAdjc; 
-}tp_listase;
+}vertice;
+
+typedef struct Grafo{
+	vertice * raiz;
+	int num_vertices;
+}Grafo;
+
 
 int main(){
 	
+	Grafo gr;
+	gr.num_vertices = 0;
 	char caracteresArquivo[100];
+	
 	char charAux;
 	int index = 0, booleano = 0, contaVertice = 0;
 	
@@ -26,7 +35,7 @@ int main(){
 		return 0;
 	}
 	else {
-		printf("Arquivo acessado com sucesso!\n");
+		printf("Arquivo acessado com sucesso!\n"); 
 	}
 	
 	while((charAux = fgetc(file)) != EOF){
@@ -41,6 +50,20 @@ int main(){
 		}
 	}
 	
+	gr.num_vertices = contaVertice;
+	char pica[contaVertice];
+	strncpy(pica, caracteresArquivo, contaVertice);
+	int a;
+	for(a = 0; a<contaVertice; a++){
+		printf("\n%c", pica[a]);
+	}
+	
+	
+	
+	// malloc sizeoff vertice
+	// 
+	
+	printf("%d", contaVertice);
 	fclose(file);
 	return 0;
 }
